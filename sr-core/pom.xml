@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.edu.unbosque</groupId>
+	<artifactId>sr-core</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>Registraduria - Gateway Core</name>
+	<url>http://co.edu.unbosque</url>
+
+	<modules>    
+	    <module>../sr-core-ear</module>
+	    <module>../sr-core-bsn</module> 
+	    <module>../sr-core-bsn-objects</module> 
+	    <module>../sr-core-bundles</module> 
+		<module>../sr-core-logging</module>		
+		<module>../sr-core-persistence</module> 
+		<module>../sr-core-ws-client</module>  
+		<module>../sr-core-ws-objects</module>	   		
+		<module>../sr-core-ws-srv</module>
+	</modules>
+</project>

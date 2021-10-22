@@ -1,0 +1,163 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Alertas Core-PSE</title>
+</head>
+
+<body style="font-family:Tahoma, Geneva, sans-serif; font-size:12px;">
+    <table width="600" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td>
+				<img src="{{ imageRepoURL }}/imagenes/logo-ath.png" alt="logo-ath"/>
+				<!--img src="file:///C:/pse-core-config/mail/template/imagenes/logo-ath.png" alt="logo-ath"/-->
+			</td>
+		</tr>
+		<!--línea azúl-->
+		<tr>
+			<td><hr style="background:#1C5094; color:#FFF; text-align:center; padding:2 0; margin:0;"></hr></td>
+		</tr>
+		<tr>
+			<td><!--inicia la tabla adiconal-->
+					<table width="600" border="0" cellspacing="0" cellpadding="0" style="background:#EAECEB;">
+					  <tr>
+						<td colspan="5" style="color:#336699; text-align:center; padding-top: 20px; font-size:25px;">Mensaje de Alerta</td>
+					</tr>
+					<tr>
+						<td width="43">&nbsp;</td>
+						<td width="197">&nbsp;</td>
+						<td width="120">&nbsp;</td>
+						<td width="197">&nbsp;</td>
+						<td width="43">&nbsp;</td>
+					</tr>
+					<!-- 
+						Tipo de usuario: PB / BBS
+						Banco: nombre banco
+						N&uacute;mero de Transaccij&oacute;n del Canal: "****REVISAR****"
+						Fecha de la transacci&oacute;n : 2016-01-05 20:00:27
+						Cuenta Debito : null
+						Valor : 3999
+						Numero Factura: 42755
+						Identificador ACH : 178202449
+						Estado de la transaccion : NOT_AUTHORIZED
+						Numero de Autorizacion (Causal): 00015
+					-->
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Tipo de Usuario:</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ userType }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Banco:</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ bankName }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Fecha de la Transacci&oacute;n:</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ transactionDate }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Cuenta D&eacute;bito:</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ debitAccount }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Valor:</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ billValue }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Referencia de Pago:</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ billNumber }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr  id="lblInvoiceReference3" {{ lblInvoiceReference3 }}>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Id Transacci&oacute;n:</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ trazabilityCode }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Estado de la transacci&oacute;n:</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ transactionState }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">Numero de Autorizaci&oacute;n</td>
+						<td>&nbsp;</td>
+						<td style="color:#336699; font-size:12px;">{{ authorizationId }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#061B36; font-size:16px;">Atentamente,</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#061B36; font-weight:bold;">Core-PSE &#8211; Grupo Aval </td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color:#061B36; font-weight:bold;">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</td><!--finaliza la tabla adicional-->
+		</tr>
+		<!--línea azúl-->
+		<tr>
+			<td><hr style="background:#1C5094; color:#FFF; text-align:center; padding:2 0; margin:0;"></hr></td>
+		</tr>
+		<tr>
+			<td style="background:#EAECEB; font-size: 8px; text-align: center; color:#666666; padding: 13px 56px;">Aviso legal: El contenido de este mensaje y sus archivos adjuntos son confidenciales y uso exclusivo del Grupo Aval. 
+			Se encuentran dirigidos s&oacute;lo para uso del destinatario al cual van enviados. Su reproducci&oacute;n, lectura y/o copia se encuentran prohibidas a 
+			cualquier persona diferente a &eacute;ste y puede ser ilegal. Si usted lo ha recibido por error, inf&oacute;rmenoslo y elim&iacute;nelo de su correo. Las opiniones,
+			informaciones, conclusiones y cualquier otro tipo de dato contenido en este correo electr&oacute;nico, no relacionados con la actividad del Grupo Aval, se entender&aacute;n como personales y de ninguna manera son avaladas por el Grupo Aval.
+			</td>
+		</tr>
+		<tr>
+			<td style="background:#EAECEB;">
+				<center>
+					<img src="{{ imageRepoURL }}/imagenes/logo-ath.png" alt="logo-ath"/>
+					<!--img src="file:///C:/pse-core-config/mail/template/imagenes/logo-ath.png" alt="logo-ath"/-->
+				</center>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>

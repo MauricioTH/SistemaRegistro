@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>REGISTRO CIUDADANOS</title>
+</h:head>
+<h:body>
+	
+	 <h:form>
+           <p:menubar autoDisplay="false"  > 
+               <p:menuitem value="&nbsp;NUEVO CIUDADANO" actionListener="#{CiudadanoBeans.prepararInsertar}" onclick="PF('dlgNuevo').show();"  />  
+            </p:menubar>  
+        </h:form>
+        <br></br>
+
+    <h:form id="frmciudadanos" style="width:900px;border-color: #036fab; border-style: solid; border-width:thin; margin-left:300px">    
+          <p:dataTable  var="ciudadano" value="#{CiudadanoBeans.ciudadanos}" emptyMessage="No hay Ciudadanos disponibles"
+                        paginator="true" rows="100" paginatorPosition="bottom"  
+                        paginatorTemplate="  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                        rowsPerPageTemplate="5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100"
+                        rowKey="#{ciudadano.identificacion}"  selection="#{CiudadanoBeans.ciudadano}" selectionMode="single"
+                        scrollWidth="900"  scrollHeight="300" scrollable="true">  
+                        
+              <f:facet name="header"><h2 style="color: dodgerblue; ">CIUDADANOS</h2> </f:facet>
+              <p:column headerText="Identificación del Ciudadano"  filterBy="#{ciudadano.identificacion}" style="width: 100px">  
+                     <h:outputText value="#{ciudadano.identificacion}" />  
+                 </p:column>  
+  
+              <p:column headerText="Primer Nombre" filterBy="#{ciudadano.primerNombre}" style="width: 100px">  
+                      <h:outputText value="#{ciudadano.primerNombre}" />  
+               </p:column> 
+               <p:column headerText="Segundo Nombre" filterBy="#{ciudadano.segundoNombre}" style="width: 100px">  
+                      <h:outputText value="#{ciudadano.segundoNombre}" />  
+               </p:column>  
+               <p:column headerText="Primer Apellido" filterBy="#{ciudadano.primerApellido}" style="width: 100px">  
+                      <h:outputText value="#{ciudadano.primerApellido}" />  
+               </p:column>  
+               <p:column headerText="Segundo Apellido" filterBy="#{ciudadano.segundoApellido}" style="width: 100px">  
+                      <h:outputText value="#{ciudadano.segundoApellido}" />  
+               </p:column> 
+               
+               <p:column headerText="Lugar de Nacimiento" filterBy="#{ciudadano.ciudad}" style="width: 100px">  
+                      <h:outputText value="#{ciudadano.segundoApellido}" />  
+               </p:column> 
+              
+               <f:facet name="footer">
+                     <!-- <p:commandButton  update=":frmEditar" actionListener="#{CiudadanoBeans.prepararActualizar(ciudadano.identificacion)}" oncomplete="dlgEditar.show();" image="icon-editar" title="editar">  </p:commandButton>      
+                     <p:commandButton  update=":frmEliminar" actionListener="#{CiudadanoBeans.prepararEliminar(ciudadano.identificacion)}" oncomplete="dlgEliminar.show();" image="icon-deleteopci" title="Eliminar">  </p:commandButton>         -->
+                </f:facet>    
+             </p:dataTable>           
+         </h:form>
+         
+         
+         <h:form id="frmNuevo">   
+         <p:dialog header="Nuevo Ciudadano" widgetVar="dlgNuevo" resizable="false" id="dlgNuevo" modal="true">  
+            <p:growl id="growlNuevo" showDetail="true"  sticky="true" />  
+            <h:panelGrid id="pgNuevo" columns="1" cellpadding="4" style="width: 500px">                  
+                  <h:outputText value="Identificación" />              
+                  <p:inputText value="#{CiudadanoBeans.ciudadano.identificacion}" alt="left"  />                  
+            </h:panelGrid>        
+            <p:separator/>    
+            
+            
+               <h:panelGrid columns="2" cellpadding="4" style="width: 500px">  
+                  <h:outputText value="Primer Nombre:" />                  
+                  <p:inputText value="#{CiudadanoBeans.ciudadano.primerNombre}" style="width: 100px" />                           
+                  <h:outputText value="Segundo Nombre:" /> 
+                  <p:inputText value="#{CiudadanoBeans.ciudadano.segundoNombre}" style="width: 100px" />    
+                 
+                  <h:outputText value="Primer Apellido:" />                  
+                  <p:inputText value="#{CiudadanoBeans.ciudadano.primerApellido}" style="width: 100px" />                    
+                  <h:outputText value="Segundo Apellido:" />                  
+                  <p:inputText value="#{CiudadanoBeans.ciudadano.segundoApellido}" style="width: 100px" />                                  
+            </h:panelGrid>  
+            <p:separator/>
+            
+            <h:panelGrid columns="2" cellpadding="4" style="width: 500px">
+                  <h:outputText value="Fecha de nacimiento:" /> 
+                  <p:calendar id="calendar1" value="#{CiudadanoBeans.ciudadano.fechanacimiento}"
+                            navigator="true" mode="popup" locale="es" maxdate="#{CiudadanoBeans.today}"
+                            required="true" pattern="yyyyMMdd" size="12" style="width: 100px">
+                  </p:calendar>                                                                         
+                  <h:outputText value="Lugar de Nacimiento:" /> 
+                  <h:selectOneMenu id="codiciudad1" value="#{CiudadanoBeans.ciudadano.lugarnacimiento.id}" style="width: 100px"  required="true" >
+                    <f:selectItems  value="#{CiudadanoBeans.ciudades}" var="ciudad"
+                                    itemValue="#{ciudad.id}" 
+                                    itemLabel="#{ciudad.nombreciudad}" />               
+                </h:selectOneMenu>      
+            </h:panelGrid>  
+            <p:separator/> 
+            <h:panelGrid columns="2" cellpadding="4" style="width: 500px">
+                  <h:outputText value="Fecha de Expedicion:" />
+                  <p:calendar id="calendar2" value="#{CiudadanoBeans.ciudadano.fechaexpedicion}"
+                            navigator="true" mode="popup" locale="es" maxdate="#{CiudadanoBeans.today}"
+                            required="true" pattern="yyyyMMdd" size="12" style="width: 100px">
+                  </p:calendar>                                                                             
+                  <h:outputText value="Lugar de Expedicion:" />
+                   <h:selectOneMenu id="codiciudad2" value="#{CiudadanoBeans.ciudadano.lugarexpedicion.id}" style="width: 100px"  required="true" >
+                    <f:selectItems  value="#{CiudadanoBeans.ciudades}" var="ciudad"
+                                    itemValue="#{ciudad.id}" 
+                                    itemLabel="#{ciudad.nombreciudad}"  />               
+                </h:selectOneMenu>                                                   
+            </h:panelGrid>  
+            <p:separator/>
+            <h:panelGrid columns="2" cellpadding="4" style="width: 500px">  
+                  <h:outputText value="RH:" />                  
+                  <p:inputText value="#{CiudadanoBeans.ciudadano.rh}" style="width: 100px" />                           
+                  <h:outputText value="Sexo:" /> 
+                  <p:inputText value="#{CiudadanoBeans.ciudadano.sexo}" style="width: 100px" />                                                                    
+            </h:panelGrid>  
+            <p:separator/>
+            
+             
+           <p:commandButton  value="&nbsp;Guardar"    update=":frmciudadanos, growlNuevo, dlgNuevo"  actionListener="#{CiudadanoBeans.insertar}" onclick="PF('dlgNuevo').hide()"  > </p:commandButton>      
+           <p:commandButton value="&nbsp;Cancelar"   oncomplete="dlgNuevo.hide();" image="icon-cancelar"> </p:commandButton>  
+         </p:dialog>      
+      </h:form>
+        
+         
+</h:body>
+</html>
+
+

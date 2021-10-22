@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>REGISTRO ANTECEDENTES A CIUDADANOS</title>
+</h:head>
+<h:body>
+
+        
+
+    <h:form id="frmciudadanos" style="width:900px;border-color: #036fab; border-style: solid; border-width:thin; margin-left:300px; animation: linear ">    
+          <p:dataTable  var="ciudadano" value="#{AntecedentesCiudadanosBeans.ciudadanos}" emptyMessage="No hay Ciudadanos disponibles"
+                        paginator="true" rows="100" paginatorPosition="bottom"  
+                        paginatorTemplate="  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                        rowsPerPageTemplate="5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100"
+                        rowKey="#{ciudadano.identificacion}"  selection="#{AntecedentesCiudadanosBeans.ciudadano}" selectionMode="single"
+                        scrollWidth="900"  scrollHeight="300" scrollable="true">  
+                        
+              <f:facet name="header"><h2 style="color: dodgerblue; ">REGISTRO ANTECEDENTES A CIUDADANOS</h2> </f:facet>
+              <p:column headerText="Identificación del Ciudadano"  filterBy="#{ciudadano.identificacion}" style="width: 100px">  
+                     <h:outputText value="#{ciudadano.identificacion}" />  
+                 </p:column>  
+  
+              <p:column headerText="Nombres" filterBy="#{ciudadano.primerNombre}" style="width: 100px">  
+                      <h:outputText value="#{ciudadano.primerNombre}" />  
+               </p:column> 
+               
+               <p:column headerText="Apellidos" filterBy="#{ciudadano.primerApellido}" style="width: 100px">  
+                      <h:outputText value="#{ciudadano.primerApellido}" />  
+               </p:column>               
+               
+               <f:facet name="footer">
+                <p:commandButton   actionListener="#{AntecedentesCiudadanosBeans.prepararInsertar}"  onclick="PF('dlgNuevo').show();"  title="Registrar Antecedente">  </p:commandButton>      
+                </f:facet>    
+             </p:dataTable>           
+         </h:form>
+         
+         
+         <h:form id="frmNuevo">   
+         <p:dialog header="Nuevo Antecedente" widgetVar="dlgNuevo" resizable="false" id="dlgNuevo" modal="true">  
+            <p:growl id="growlNuevo" showDetail="true"  sticky="true" />  
+            <h:panelGrid id="pgNuevo" columns="1" cellpadding="4" style="width: 500px">                  
+                  <h:outputText value="Identificación" />              
+                  <p:inputText value="#{AntecedentesCiudadanosBeans.antecedentesciudadano.identificacion.identificacion}" alt="left"  />                  
+            </h:panelGrid>        
+            <p:separator/>           
+               <h:panelGrid columns="2" cellpadding="4" style="width: 500px">  
+                  <h:outputText value="Tipo Antecedente:" />                                 
+                   <h:selectOneMenu id="codiantecedente" value="#{AntecedentesCiudadanosBeans.antecedentesciudadano.idantecedente.id}" style="width: 100px"  required="true" >
+                  <f:selectItems  value="#{AntecedentesCiudadanosBeans.antecedentes}" var="antecedente"
+                                    itemValue="#{antecedente.id}" 
+                                    itemLabel="#{antecedente.descripcion}" />   
+                  </h:selectOneMenu>    
+                  <h:outputText value="Fecha:" />                     
+                  <p:calendar id="calendar" value="#{AntecedentesCiudadanosBeans.antecedentesciudadano.fechaRegistro}"
+                            navigator="true" mode="popup" locale="es" 
+                            required="true" pattern="yyyyMMdd" size="12">
+                </p:calendar>   
+            
+            </h:panelGrid>  
+            <p:separator/>           
+              <p:commandButton  value="&nbsp;Guardar"  update=":frmNuevo, growlNuevo, dlgNuevo"  actionListener="#{AntecedentesCiudadanosBeans.insertar}" oncomplete="dlgNuevo.hide()" image="icon-guardar" > </p:commandButton>      
+             <p:commandButton value="&nbsp;Cancelar"   oncomplete="dlgNuevo.hide();" image="icon-cancelar"> </p:commandButton> 
+          
+         </p:dialog>      
+      </h:form>   
+</h:body>
+</html>
+
+

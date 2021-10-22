@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"> 
+  <persistence-unit name="sdrPersistentUnit" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <non-jta-data-source>jdbc/sdrDS</non-jta-data-source>
+    <!-- Mapeos -->
+    <class>co.edu.unbosque.persistence.model.BatchJobExecution</class>
+    <class>co.edu.unbosque.persistence.model.BatchJobExecutionContext</class>
+    <class>co.edu.unbosque.persistence.model.BatchJobInstance</class>
+    <class>co.edu.unbosque.persistence.model.BatchStepExecution</class>
+    <class>co.edu.unbosque.persistence.model.BatchStepExecutionContext</class>
+    <class>co.edu.unbosque.persistence.model.Rango</class>
+    <class>co.edu.unbosque.persistence.model.Usuario</class>
+    <class>co.edu.unbosque.persistence.model.Perfil</class>
+    <class>co.edu.unbosque.persistence.model.Ciudadano</class>
+    <class>co.edu.unbosque.persistence.model.Antecedentes</class>
+    <class>co.edu.unbosque.persistence.model.Antecedentesciudadanos</class>
+    <class>co.edu.unbosque.persistence.model.Ciudad</class>
+    <class>co.edu.unbosque.persistence.model.Departamento</class>
+    <class>co.edu.unbosque.persistence.model.Fuerzapublica</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <!-- Evitar excepción Hibernate : Disabling contextual LOB creation as 
+            createClob() method threw error -->
+      <property name="hibernate.temp.use_jdbc_metadata_defaults" value="true"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+      <property name="hibernate.connection.release_mode" value="after_transaction"/>
+      <property name="hibernate.show_sql" value="false"/>
+    </properties>
+  </persistence-unit>
+</persistence>

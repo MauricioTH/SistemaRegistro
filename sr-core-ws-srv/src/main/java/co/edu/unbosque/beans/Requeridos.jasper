@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Requeridos" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="1ebb31d9-8bbc-426c-acc1-70dfaae30a3c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="sactsaldinic" class="java.math.BigDecimal"/>
+	<field name="sactdebi" class="java.math.BigDecimal"/>
+	<field name="sactcred" class="java.math.BigDecimal"/>
+	<field name="sactsald" class="java.math.BigDecimal"/>
+	<field name="concuenta.cuennomb" class="java.lang.String"/>
+	<field name="concuenta.cuencodi" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="56f607fa-54e6-482a-919d-47708f29f8ef" x="167" y="25" width="172" height="20"/>
+				<textElement/>
+				<text><![CDATA[Reportes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="671c1c4e-d58f-4fb7-8d75-db98efa0bbf7" x="0" y="59" width="80" height="20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Identificacion]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement uuid="06b633c4-991d-477b-9560-c8b469891f6a" x="5" y="0" width="257" height="15"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{primerNombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="15" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch"/>
+	</summary>
+</jasperReport>

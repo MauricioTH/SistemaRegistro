@@ -1,0 +1,55 @@
+
+.ui-state-default .icon-add{
+   background-image:url(../img/users.png);
+}
+
+.ui-state-default .icon-guardar{
+   background-image:url(../img/save.png);
+}
+
+.ui-state-default .icon-editar{
+   background-image:url(../img/edit.png);
+
+}
+.ui-state-default .icon-cancelar{
+     background-image:url(../img/delete.png);
+    
+}
+
+.ui-state-default .icon-update{
+   background-image:url(../img/accept.png);
+}
+
+ 
+.ui-state-default .icon-eliminarusuario{
+     background-image:url(../img/delete_user.png);   
+}
+
+.ui-state-default .icon-editarusuario{
+     background-image:url(../img/editarusuario.png);   
+}
+
+
+
+.ui-state-default .icon-deleteopci{
+     background-image:url(../img/delete_folder.png);   
+}
+
+
+.ui-state-default .icon-updateopci{
+     background-image:url(../img/folder_accept.png);   
+}
+
+
+.ui-state-default .icon-nuevo{
+     background-image:url(../img/editarusuario.png);   
+}
+
+.ui-state-default .icon-buscar{
+     background-image:url(../img/search.png);   
+}
+
+.ui-state-default .icon-nuevoLogo{
+   background-image:url(../img/folder.png);
+}
+

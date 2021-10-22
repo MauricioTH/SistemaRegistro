@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Registraduria" targetNamespace="http://www.example.org/Registraduria/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:regis="http://www.example.org/Registraduria/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/Registraduria/">
+      <xsd:element name="ConsultaAntecedentesReq">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AntecedentesIn" type="regis:AntecedentesType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultaAntecedentesResp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AntecedentesOut" type="regis:AntecedentesResponseType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultaFuncionarioReq">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FuncionarioIn" type="regis:FuncionarioInType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultaFuncionarioResp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FuncionarioOut" type="regis:FuncionarioOutType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LoginUsuarioReq">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="LogIn" type="regis:LoginType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LoginUsuarioResp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="LoginOut" type="regis:LoginResponseType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegistroUsuarioReq">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="UsuarioIn" type="regis:RegistroType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegistroUsuarioResp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="UsuarioOut" type="regis:RegistroResponseType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="AntecedentesType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="RqUID"/>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:dateTime" name="Fecha_Consulta"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:int" name="Documetnum"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AntecedentesResponseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="RqUID"/>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:dateTime" name="Fecha_Consulta"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:int" name="StatusCode"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="estado"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="StatusDesc"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:boolean" name="Antecedente"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FuncionarioInType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="RqUID"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:dateTime" name="Fecha_Consulta"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:int" name="Identificacion"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Nombres"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Apellidos"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Fuerza_Publica"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Rango"/>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="Email"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FuncionarioOutType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="RqUID"/>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:dateTime" name="Fecha_Consulta"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:int" name="StatusCode"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Severity"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="StatusDesc"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LoginType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="RqUID"/>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:dateTime" name="Fecha_Login"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:int" name="NumDocumento"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Password"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LoginResponseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="RqUID"/>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:dateTime" name="Fecha_Login"/>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:int" name="StatusCode"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Severity"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="StatusDesc"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RegistroType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="RqUID"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:dateTime" name="Fecha_Registro"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:int" name="Identificacion"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Nombres"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Apellidos"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Fuerza_Publica"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Rango"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Email"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RegistroResponseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:string" name="RqUID"/>
+          <xsd:element minOccurs="0" maxOccurs="1" type="xsd:dateTime" name="Fecha_Registro"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:int" name="StatusCode"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="Severity"/>
+          <xsd:element minOccurs="1" maxOccurs="1" type="xsd:string" name="StatusDesc"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistroUsuarioRequest">
+    <wsdl:part element="regis:RegistroUsuarioReq" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="RegistroUsuarioResponse">
+    <wsdl:part element="regis:RegistroUsuarioResp" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="LoginUsuarioRequest">
+    <wsdl:part element="regis:LoginUsuarioReq" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="LoginUsuarioResponse">
+    <wsdl:part element="regis:LoginUsuarioResp" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaFuncionarioRequest">
+    <wsdl:part element="regis:ConsultaFuncionarioReq" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaFuncionarioResponse">
+    <wsdl:part element="regis:ConsultaFuncionarioResp" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaAntecedentesRequest">
+    <wsdl:part element="regis:ConsultaAntecedentesReq" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaAntecedentesResponse">
+    <wsdl:part element="regis:ConsultaAntecedentesResp" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Registraduria">
+    <wsdl:operation name="ConsultaAntecedentes">
+      <wsdl:input message="regis:ConsultaAntecedentesRequest"/>
+      <wsdl:output message="regis:ConsultaAntecedentesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionario">
+      <wsdl:input message="regis:ConsultaFuncionarioRequest"/>
+      <wsdl:output message="regis:ConsultaFuncionarioResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoginUsuario">
+      <wsdl:input message="regis:LoginUsuarioRequest"/>
+      <wsdl:output message="regis:LoginUsuarioResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroUsuario">
+      <wsdl:input message="regis:RegistroUsuarioRequest"/>
+      <wsdl:output message="regis:RegistroUsuarioResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RegistraduriaSOAP" type="regis:Registraduria">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RegistroUsuario">
+      <soap:operation soapAction="http://www.example.org/registraduria/registroUsuario"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginUsuario">
+      <soap:operation soapAction="http://www.example.org/registraduria/login"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionario">
+      <soap:operation soapAction="http://www.example.org/registraduria/consultaFuncionario"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaAntecedentes">
+      <soap:operation soapAction="http://www.example.org/registraduria/consultaAntecedentes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Registraduria">
+    <wsdl:port binding="regis:RegistraduriaSOAP" name="RegistraduriaSOAP">
+      <soap:address location="http://localhost/registraduria/registraduria"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

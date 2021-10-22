@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.edu.unbosque</groupId>
+	<artifactId>sr-core-ear</artifactId>
+	<version>2.0</version>
+	<packaging>ear</packaging>
+	<name>SR - EAR Module</name>
+
+	
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<version>3.1</version>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<version>6</version>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true
+							</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Implementation-Vendor-Id>A Toda Hora S.A
+							</Implementation-Vendor-Id>
+						</manifestEntries>
+					</archive>
+					<modules>
+						<webModule>
+							<groupId>co.edu.unbosque</groupId>
+							<artifactId>sr-core-ws-srv</artifactId>
+							<bundleFileName>sr-core-ws-srv.war</bundleFileName>
+							<contextRoot>paymentServices</contextRoot>
+						</webModule>
+					</modules>
+					<displayName>SR - EAR Package</displayName>
+					<generateApplicationXml>true</generateApplicationXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<finalName>sr-core</finalName>
+	</build>
+
+	<url>http://www.pagosaval.com.co</url>
+
+	<dependencies>
+		<!-- <dependency>
+			<groupId>co.com.ath.pse</groupId>
+			<artifactId>sr-core-ws-srv</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>war</type>
+		</dependency> -->
+		<dependency>
+			<groupId>co.edu.unbosque</groupId>
+			<artifactId>sr-core-ws-srv</artifactId>
+			<version>2.0</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+</project>

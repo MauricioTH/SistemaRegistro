@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="sr-core-ws-srv">
+                
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+                
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
+        <dependent-module archiveName="sr-core-persistence-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sr-core-persistence/sr-core-persistence">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="sr-core-bundles-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sr-core-bundles/sr-core-bundles">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="sr-core-logging-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sr-core-logging/sr-core-logging">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="sr-core-bsn-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sr-core-bsn/sr-core-bsn">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="sr-core-bsn-objects-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sr-core-bsn-objects/sr-core-bsn-objects">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="sr-core-ws-objects-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sr-core-ws-objects/sr-core-ws-objects">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <property name="java-output-path" value="/sr-core-ws-srv/target/classes"/>
+                
+        <property name="context-root" value="sr-core-ws-srv"/>
+                
+        <property name="component.exclusion.patterns" value="WEB-INF/web.xml"/>
+            
+    </wb-module>
+    
+</project-modules>

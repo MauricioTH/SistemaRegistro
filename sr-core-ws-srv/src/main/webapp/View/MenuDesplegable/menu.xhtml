@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>REGISTRADURIA</title>
+    </h:head>
+    <h:body>
+        <h:form id="menubar" >  
+          
+            <p:menubar autoDisplay="false"   >
+                <p:menuitem value="INGRESAR A MODULOS"  /> 
+                                
+                    <p:submenu label="Reportes" icon="ui-icon-document">           
+                         <p:submenu label="Antecedentes" icon="ui-icon-document">                                     
+                            <p:submenu label="Requeridos" icon="ui-icon-document">           
+                                <p:menuitem value="Informe de Ciudadanos sin antecedente" url="/View/Reportes/ReportesAntecedentes.xhtml" />                        
+                            </p:submenu>  
+                            <p:submenu label="No Requeridos" icon="ui-icon-document">           
+                                <p:menuitem value="Informe de Ciudadanos sin antecedente" url="/View/Reportes/ReportesSinAntecedentes.xhtml" />                        
+                            </p:submenu>                      
+                         </p:submenu>                      
+                    </p:submenu>
+                                        
+                    <p:submenu label="Registrar" icon="ui-icon-document">           
+                            <p:submenu label="Ciudadanos" icon="ui-icon-document">           
+                                <p:menuitem value="Resgistrar Nuevo Ciudadano" url="/View/Ciudadanos/Ciudadanos.xhtml" />                        
+                            </p:submenu> 
+                            <p:submenu label="Antecedentes" icon="ui-icon-document">           
+                                <p:menuitem value="Resgistrar Nuevo Antecedente a Ciudadano" url="/View/Ciudadanos/RegistroAntecedentes.xhtml" />                        
+                            </p:submenu>             
+                    </p:submenu>  
+                 
+                  <p:menuitem value="CERRAR SESION" actionListener="#{LoginBean.clocksSession}" icon="ui-icon-close"  />  
+                 
+                 
+                 
+                 
+         </p:menubar>  
+         
+        </h:form>
+        
+    </h:body>
+</html>
+

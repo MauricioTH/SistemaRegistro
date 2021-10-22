@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Reportes Ciudadanos Sin Antecedentes</title> 
+        <link rel="stylesheet" href="/sr-core-ws-srv/folder/css/estilos.css"/> 
+    </h:head>
+    <h:body>
+        <h:form id="frmReportes" style="width:800px;border-color: #036fab; border-style: solid; border-width:thin; margin-left:100px">        
+            <p:graphicImage id="player" value="/folder/img/logo-ubosque.png" style="width:100px; margin-left:80px"/>                        
+            <p:panel header="Consultas por Filtracion" style="width:550px;">                       
+                 <p:commandButton style="margin-left: 10px" value="Consultar"  process=":frmReportes" update=":frmReportes,:frmNoRequeridos:tblNoRequeridos" actionListener="#{ReportesAntecedentesBean.consultarNoRequeridos}" /> 
+            </p:panel>                                      
+         </h:form>            
+         <p:separator/> 
+         <h:form id="frmNoRequeridos" style="width:800px;border-color: #036fab; border-style: solid; border-width:thin; margin-left:100px">             
+                <p:panel header="Exportar">  
+                    <h:commandButton action="#{ReportesAntecedentesBean.retornarFormatoXls}" immediate="true"
+                        id="fileExcel"  image="/folder/img/excel.png">                    
+                    </h:commandButton>
+                    
+                    <h:commandButton onclick="this.form.target='_blank'"
+                        action="#{ReportesAntecedentesBean.retornarFormatoPDF}" immediate="true"
+                        id="filePdf"  image="/folder/img/pdf.png">                    
+                    </h:commandButton>
+                   
+                    <h:commandButton action="#{ReportesAntecedentesBean.retornarFormatoCsv}" immediate="true"
+                        id="fileCsv"  image="/folder/img/csv.png">                    
+                    </h:commandButton>
+                    
+                    <h:commandButton action="#{ReportesAntecedentesBean.retornarFormatoXml}" immediate="true"
+                        id="fileXml"  image="/folder/img/xml.png">                    
+                    </h:commandButton>
+                </p:panel>   
+                               
+            <p:dataTable  id="tblNoRequeridos" var="ciudadano" value="#{ReportesAntecedentesBean.listNoRequeridos}"  emptyMessage="No hay Ciudadanos con antecedentes"
+                          paginator="true" rows="100" paginatorPosition="bottom"  
+                          paginatorTemplate="  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                          rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100"
+                          rowKey="#{ciudadano.identificacion}"  selection="#{ReportesAntecedentesBean.antecedentesCiudadanos}" selectionMode="single"
+                          scrollWidth="800"  scrollHeight="600" scrollable="true">                                        
+    
+                <f:facet name="header"><h2 style="color: dodgerblue;">Reportes Ciudadanos Sin Antecedentes</h2> </f:facet> 
+                
+                <p:column headerText="Identificación" style="width:50px" >  
+                    <h:outputText  value="#{ciudadano.identificacion}"  />   
+                </p:column>  
+
+                <p:column headerText="Nombres" style="width:120px; margin-left:80px" >  
+                    <h:outputText  value="#{ReportesAntecedentesBean.nombres}"  style="width:120px"/>   
+                </p:column> 
+                
+                <p:column headerText="Apellidos" style="width:120px;margin-left:80px">  
+                    <h:outputText  value="#{ReportesAntecedentesBean.apellidos}" style="width:120px" />   
+                </p:column>  
+                                                          
+           </p:dataTable>   
+        </h:form>
+        
+        
+        
+        
+        
+        
+     
+        
+    </h:body>
+</html>
+
+

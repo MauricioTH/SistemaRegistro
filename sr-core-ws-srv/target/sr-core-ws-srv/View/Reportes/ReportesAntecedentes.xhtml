@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Reportes Antecedentes</title> 
+        <link rel="stylesheet" href="/sr-core-ws-srv/folder/css/estilos.css"/> 
+    </h:head>
+    <h:body>
+        <h:form id="frmReportes" style="width:800px;border-color: #036fab; border-style: solid; border-width:thin; margin-left:100px">  
+       
+            <h:panelGrid columns="2" > 
+              <p:panel header="Consultas por Filtracion" style="width:550px;"> 
+                    <h:panelGrid  columns="4" style="font-size:12px;">  
+                        <h:outputText value="Periodo" style="font-size:12px"/> 
+                            <p:selectOneMenu value="#{ReportesAntecedentesBean.mes}" style=" font-size:12px" required="true" >  
+                                <f:selectItem itemLabel="Enero" itemValue="0" />  
+                                <f:selectItem itemLabel="Febrero" itemValue="1" />  
+                                <f:selectItem itemLabel="Marzo" itemValue="2" />  
+                                <f:selectItem itemLabel="Abril" itemValue="3" />  
+                                <f:selectItem itemLabel="Mayo" itemValue="4" />  
+                                <f:selectItem itemLabel="Junio" itemValue="5" />  
+                                <f:selectItem itemLabel="Julio" itemValue="6" />  
+                                <f:selectItem itemLabel="Agosto" itemValue="7" />  
+                                <f:selectItem itemLabel="Septiembre" itemValue="8" />  
+                                <f:selectItem itemLabel="Octubre" itemValue="9" />  
+                                <f:selectItem itemLabel="Noviembre" itemValue="10" />  
+                               <f:selectItem itemLabel="Diciembre" itemValue="11" /> 
+                            </p:selectOneMenu>
+                        <h:outputText value="Año" style="font-size:12px"/> 
+                        <p:spinner id="anios"   
+                           value="#{ReportesAntecedentesBean.anio}" min="1950" max="2100"/>  
+                    </h:panelGrid>
+                           
+                          
+                     <p:commandButton style="margin-left: 140px" value="Consultar"  process=":frmReportes" update=":frmReportes,:frmRequeridos:tblRequeridos" actionListener="#{ReportesAntecedentesBean.consultarRequeridos}" /> 
+                 </p:panel>            
+                    <p:graphicImage id="player" value="/folder/img/logo-ubosque.png" style="width:100px; margin-left:80px"/>
+                  
+             </h:panelGrid> 
+             </h:form>   
+             
+             <h:form id="frmRequeridos" style="width:800px;border-color: #036fab; border-style: solid; border-width:thin; margin-left:100px">
+               
+                <p:panel header="Exportar">  
+                    <h:commandButton action="#{ReportesAntecedentesBean.retornarFormatoXls}" immediate="true"
+                        id="fileExcel"  image="/folder/img/excel.png">                    
+                    </h:commandButton>
+                    
+                    <h:commandButton onclick="this.form.target='_blank'"
+                        action="#{ReportesAntecedentesBean.retornarFormatoPDF}" immediate="true"
+                        id="filePdf"  image="/folder/img/pdf.png">                    
+                    </h:commandButton>
+                   
+                    <h:commandButton action="#{ReportesAntecedentesBean.retornarFormatoCsv}" immediate="true"
+                        id="fileCsv"  image="/folder/img/csv.png">                    
+                    </h:commandButton>
+                    
+                    <h:commandButton action="#{ReportesAntecedentesBean.retornarFormatoXml}" immediate="true"
+                        id="fileXml"  image="/folder/img/xml.png">                    
+                    </h:commandButton>
+                </p:panel>   
+             
+                    
+            <p:dataTable  id="tblRequeridos" var="ciudadano" value="#{ReportesAntecedentesBean.listAntecedentesCiudadanos}"  emptyMessage="No hay Ciudadanos con antecedentes"
+                          paginator="true" rows="100" paginatorPosition="bottom"  
+                          paginatorTemplate="  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                          rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100"
+                          rowKey="#{ciudadano.identificacion}"  selection="#{ReportesAntecedentesBean.antecedentesCiudadanos}" selectionMode="single"
+                          scrollWidth="800"  scrollHeight="600" scrollable="true">                                        
+    
+                <f:facet name="header"><h2 style="color: dodgerblue;">Reportes Ciudadanos con Antecedentes</h2> </f:facet> 
+                
+                <p:column headerText="Identificación" style="width:50px" >  
+                    <h:outputText  value="#{ciudadano.identificacion}"  />   
+                </p:column>  
+
+                <p:column headerText="Nombres" style="width:120px; margin-left:80px" >  
+                    <h:outputText  value="#{ReportesAntecedentesBean.nombres}"  style="width:120px"/>   
+                </p:column> 
+                
+                <p:column headerText="Apellidos" style="width:120px;margin-left:80px">  
+                    <h:outputText  value="#{ReportesAntecedentesBean.apellidos}" style="width:120px" />   
+                </p:column>  
+                                             
+              <p:column headerText="Fecha del Antecedente" style="width:110px" >  
+                  <h:outputText  value="#{ciudadano.fechaexpedicion}"  style="width:110px"/>
+              </p:column> 
+              
+               <p:column headerText="Descripcion del Antecedente" style="width:130px" >  
+                  <h:outputText  value="#{ReportesAntecedentesBean.descripcionAntecedente}" />
+              </p:column> 
+           </p:dataTable>   
+        </h:form>
+        
+        
+        
+        
+        
+        
+     
+        
+    </h:body>
+</html>
+
+
